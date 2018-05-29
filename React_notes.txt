@@ -1,0 +1,129 @@
+Why is React so good?
+- Because in components, you don't need to explicitly say whenever your state changes to redraw a certain part of your webpage,
+  instead, it automatically watches for your states and where they can change and whenever your state changes that part of the web page 
+  gets redrawn automatically to fit that, so all we have to do is we worry about changing states and all the rest of the hardware gets taken care of for us.
+
+
+Components: 
+- part of your website page
+- combine components to a big component
+- returns a chunck of html
+- every component can only return 1 parent html element
+- if want to include mupliple html tags/elements, needs to use <div> or <span> as a parent element and wrap muplit tags inside of it 
+- e.g. structure:
+		var Component_name = React.createClass({
+			render: function() {
+				return (<>html elements<>);
+			}
+		});
+
+
+Props:
+- HTML attribute that we can pass in to customize our components in different kinds of ways 
+  - e.g.
+    var Movie = React.createClass({
+            render: function() {
+              return (
+                <div>
+                  <h1> {this.props.title} </h1>
+                  <h2> {this.props.genre} </h2>
+                </div>
+              );
+            }
+          });
+- Properties allow us to add text, and even functions
+- Call functions from other components: like call functions from component A in component B
+  - e.g.
+    In component A:
+    removeComment: function (i) {
+            console.log("Removing comment");
+            var arr = this.state.comments;
+            arr.splice(i, 1);
+            this.setState({comments: arr});
+          },
+
+    updateComment: function (newText, i) {
+      console.log("Updating comment");
+      var arr = this.state.comments;
+      arr[i] = newText;
+      this.setState({comments: arr});
+    },
+    eachComment: function (text, i) {
+      return (
+                <Comment key={i} index={i} updateCommentText={this.updateComment} removeCommentText={this.removeComment}>
+                  {text}
+                </Comment>
+             )
+    }
+
+    In component B:
+    edit: function() {
+      this.setState({editing: true});
+    },
+    save: function() {
+      var val = this.refs.newText.value;
+      console.log('New comment: ' + val);
+      this.props.updateCommentText(val, this.props.index);
+      this.setState({editing: false});
+    },
+    remove: function() {
+      console.log("Removing comment");
+      this.props.removeCommentText(this.props.index);
+    },
+
+
+
+ReactDOM.render(
+        <div>
+          <Movie title="Avenger" genre = "action" />
+          <Movie title="LALA Land" genre = "romantic" />
+          <Movie title="Avatar" genre = "action" />
+        </div>,
+        document.getElementById('example')
+      );
+
+
+eventHandler:
+- define functions in components
+- use {this.func_name} to trigger event
+- get Built-in data called children, e.g. {this.props.children}
+
+
+State:
+- used to customize components
+- update state:
+  e.g.
+  this.setState({component_name: newComponent})
+
+Props vs. States:
+- states can be changed
+- props stays the same forever, can't be changed
+- you can customize your component using props or states,
+	whenever something is going to stay the same use props,
+	whenever something is going to change use states.
+
+
+refs:
+- get a reference to one of your child html elements
+- e.g. <textarea ref="newText" defaultValue={this.props.children}></textarea>
+in <script>: 
+var val = this.refs.newText.val;
+
+Multiple Child Components:
+- Create a class to manage all the related child componenets 
+- Each child need to be uniquely identified by using key
+- Use map to iterate each element in an array, here the array is called something: 
+  this.state.something.map(function(elem, i) {
+    return (
+      <Comment key = i> {elem} </Comment>
+    );
+  }) 
+
+
+Passing Funciton as props:
+- Pass data down to the children:
+  Whenever you have information and you want to pass into a child component, you can use properties
+  properties can be something simple like a number, a text or a function.
+  Now, the child will have access to parents' function via a property
+- Pass data up to the parent:
+  Use functions: this.props.func_name

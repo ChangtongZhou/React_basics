@@ -1,0 +1,42 @@
+React recap:
+- Different parts of your website is called Components
+- Each component has a little piece memory with it, which is called State
+
+Redux Overview:
+- Redux is used to solve the problem that React had, which was hard to manage separate component with its own state floating around the application
+- Redux manages the states for React components
+- Redux takes all the states that are needed for your entire application and combines them into one big JS object, which is called Store
+- It takes the same amount of memory as React, but make the states more organized
+- Provider: makes store available to all containers, takes data from the store and pipe down to the components through containers
+- Containers: a glue that connects your React components with Redux store, fetch apps state data and use it to render (display) components. Note: Apps state will become component props
+- Whenver the state is updated/changed, the components will be re-rendered
+- Actions: any change made to the applications state
+	- type: describes the change (i.e. NEW_BUTTON_CLICKED)
+	- payload: (optional) extra data needed to perform the action
+		e.g. 
+		{
+			"title": "Avatar", 
+			"genre": "action"	
+		} 
+- Reducers: take in actions and update part of applications state, updated data gets dispatched(sent) to the store. (in short, a reducer is a piece of data you want to be saved in Store)
+
+
+Webpack: 
+- sets up the development server (changes will update live in browser)
+- converts all of your JSX in React to pure JavaScript, so it can run in a browser
+- sets up where you can type SCSS, or SASS, it can convert to normal CSS
+- allows us to write code and display properly in browser
+- all the conversions are completed behind the scenes
+
+babel-polyfill:
+- makes code backwards compatible, i.e. make code compatible with older browsers
+
+mapStateToProps:
+- takes a piece of your application store, your application state, the main data and passes it into your component as a property
+
+Action:
+- made of two parts:
+  1. type (type of action)
+  2. payload (data that needs to be returned)
+- Anytime Any action occurs, that action automatically gets sent to all reducers
+
