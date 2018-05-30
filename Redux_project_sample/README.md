@@ -1,3 +1,6 @@
+## Big thanks to this Youtube tutorial: 
+- [React JS/Redux Tutorial](https://www.youtube.com/watch?v=DiLVAXlVYR0&index=1&list=PL6gx4Cwl9DGBbSLZjvleMwldX8jGgXV6a)
+
 ![](http://i.imgur.com/DUiL9yn.png)
 
 # React/Sass/Redux Boilerplate

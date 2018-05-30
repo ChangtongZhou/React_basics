@@ -1,3 +1,6 @@
+## Big thanks to this Youtube tutorial: 
+- [React JS Tutorial for Beginners](https://www.youtube.com/watch?v=-AbaV3nrw6E&list=PL6gx4Cwl9DGBuKtLgPR_zWYnrwv-JllpA)
+
 ![](http://i.imgur.com/5Bqs5zi.png)
 
 React boilerplate thenewboston tutorials.
